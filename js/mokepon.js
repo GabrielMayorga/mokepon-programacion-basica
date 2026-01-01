@@ -25,6 +25,7 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const sectionMensajes = document.getElementById('resultado')
 
 // Variables Globales
+let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
 let vidasEnemigo = 3
@@ -49,6 +50,10 @@ let langostelvis = new Mokepon('Langostelvis', './assets/mokepons_mokepon_langos
 let tucapalma = new Mokepon('Tucapalma', './assets/mokepons_mokepon_tucapalma_attack.png', 5)
 
 let pydos = new Mokepon('Pydos', './assets/mokepons_mokepon_pydos_attack.png', 5)
+
+mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, tucapalma, pydos)   
+
+
 
 //Iniciar Juego
 function iniciarJuego(){   
