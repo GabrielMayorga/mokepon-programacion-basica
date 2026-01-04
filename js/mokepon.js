@@ -150,17 +150,17 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarAtaque.style.display = 'flex'
 
     if(inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = 'Hipodoge'
+        spanMascotaJugador.innerHTML = inputHipodoge.id
     }else if(inputCapipepo.checked){
-        spanMascotaJugador.innerHTML = 'Capipepo'
+        spanMascotaJugador.innerHTML = inputCapipepo.id
     }else if(inputRatigueya.checked){
-        spanMascotaJugador.innerHTML = 'Ratigueya'
+        spanMascotaJugador.innerHTML = inputRatigueya.id
     }else if(inputLangostelvis.checked){
-        spanMascotaJugador.innerHTML = 'Langostelvis'
+        spanMascotaJugador.innerHTML = inputLangostelvis.id
     }else if(inputTucapalma.checked){
-        spanMascotaJugador.innerHTML = 'Tucapalma'
+        spanMascotaJugador.innerHTML = inputTucapalma.id
     }else if(inputPydos.checked){
-        spanMascotaJugador.innerHTML = 'Pydos'
+        spanMascotaJugador.innerHTML = inputPydos.id
     }else{
         alert('Selecciona una mascota')
     }
@@ -170,26 +170,9 @@ function seleccionarMascotaJugador(){
 
 // Funciones aleoatorios
 function seleccionarMascotaEnemigo(){
-    let mascotaAleatoria = aleatorio(1,6)
-    if (mascotaAleatoria == 1){
-        //Hipodoge
-        spanMascotaEnemigo.innerHTML = 'Hipodoge'
-    } else if (mascotaAleatoria == 2){
-        //Capipepo
-        spanMascotaEnemigo.innerHTML = 'Capipepo'
-    } else if (mascotaAleatoria == 3){
-        //Ratigueya
-        spanMascotaEnemigo.innerHTML = 'Ratigueya'
-    } else if (mascotaAleatoria == 4){
-        //Langostelvis
-        spanMascotaEnemigo.innerHTML = 'Langostelvis'
-    } else if (mascotaAleatoria == 5){
-        //Tucapalma
-        spanMascotaEnemigo.innerHTML = 'Tucapalma'
-    } else if (mascotaAleatoria == 6){
-        //Pydos
-        spanMascotaEnemigo.innerHTML = 'Pydos'
-    }
+    let mascotaAleatoria = aleatorio(0, mokepones.length -1)
+
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
 }
 // Funciones de ataque
 function ataqueFuego(){
