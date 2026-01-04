@@ -23,11 +23,14 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const sectionMensajes = document.getElementById('resultado')
+const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 
 // Variables Globales
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
+let opcionDeMokepones
+
 let vidasEnemigo = 3
 let vidasJugador = 3
 
@@ -53,7 +56,7 @@ let tucapalma = new Mokepon('Tucapalma', './assets/mokepons_mokepon_tucapalma_at
 
 let pydos = new Mokepon('Pydos', './assets/mokepons_mokepon_pydos_attack.png', 5)
 
-mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, tucapalma, pydos)   
+
 
 hipodoge.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
@@ -103,9 +106,21 @@ pydos.ataques.push(
     {nombre: '🌱', id: 'boton-tierra'}
 )
 
+mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, tucapalma, pydos)   
 //Iniciar Juego
 function iniciarJuego(){   
     sectionSeleccionarAtaque.style.display = 'none'
+
+    mokepones.forEach((mokepon) => {
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+            <p>${mokepon.nombre}</p>
+            <img src=${mokepon.foto} alt=${mokepon.nombre}>
+        </label>
+        `
+    contenedorTarjetas.innerHTML += opcionDeMokepones
+    })
     sectionReiniciar.style.display = 'none'
 
     //Variables
