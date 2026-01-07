@@ -30,6 +30,7 @@ let inputRatigueya
 let inputLangostelvis 
 let inputTucapalma 
 let inputPydos
+let mascotaJugador
 let vidasEnemigo = 3
 let vidasJugador = 3
 
@@ -54,8 +55,6 @@ let langostelvis = new Mokepon('Langostelvis', './assets/mokepons_mokepon_langos
 let tucapalma = new Mokepon('Tucapalma', './assets/mokepons_mokepon_tucapalma_attack.png', 5)
 
 let pydos = new Mokepon('Pydos', './assets/mokepons_mokepon_pydos_attack.png', 5)
-
-
 
 hipodoge.ataques.push(
     {nombre: '💧', id: 'boton-agua'},
@@ -151,23 +150,40 @@ function seleccionarMascotaJugador(){
 
     if(inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
+        mascotaJugador = inputHipodoge.id
     }else if(inputCapipepo.checked){
         spanMascotaJugador.innerHTML = inputCapipepo.id
+        mascotaJugador = inputCapipepo.id
     }else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = inputRatigueya.id
+        mascotaJugador = inputRatigueya.id
     }else if(inputLangostelvis.checked){
         spanMascotaJugador.innerHTML = inputLangostelvis.id
+        mascotaJugador = inputLangostelvis.id
     }else if(inputTucapalma.checked){
         spanMascotaJugador.innerHTML = inputTucapalma.id
+        mascotaJugador = inputTucapalma.id
     }else if(inputPydos.checked){
         spanMascotaJugador.innerHTML = inputPydos.id
+        mascotaJugador = inputPydos.id
     }else{
         alert('Selecciona una mascota')
     }
 
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
 }
 
+function extraerAtaques(mascotaJugador){
+    let ataques
+    for (let i = 0; i < mokepones.length; i++){
+        if(mascotaJugador === mokepones[i].nombre){
+            ataques = mokepones[i].ataques
+        }
+    }
+    
+    mostrarAtaques(ataques)
+}
 // Funciones aleoatorios
 function seleccionarMascotaEnemigo(){
     let mascotaAleatoria = aleatorio(0, mokepones.length -1)
