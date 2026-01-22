@@ -21,7 +21,7 @@ const contenedorAtaques = document.getElementById('contenedorAtaques')
 // Variables Globales
 let mokepones = []
 let ataqueJugador = []
-let ataqueEnemigo
+let ataqueEnemigo = []
 let opcionDeMokepones
 let inputHipodoge 
 let inputCapipepo
@@ -37,6 +37,7 @@ let botonTierra
 let botones = []
 
 let ataquesMokepon
+let ataquesMokeponEnemigo
 let mascotaJugador
 let vidasEnemigo = 3
 let vidasJugador = 3
@@ -209,8 +210,11 @@ function secuenciaAtaque(){
                 console.log(ataqueJugador)
                 boton.style.background = '#112f58'
             }
+            ataqueAleatorioEnemigo()
         })
     })
+
+    
 }
 
 // Funciones aleoatorios
@@ -218,20 +222,21 @@ function seleccionarMascotaEnemigo(){
     let mascotaAleatoria = aleatorio(0, mokepones.length -1)
 
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
+    ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques
     secuenciaAtaque()
 }
 
-
 function ataqueAleatorioEnemigo(){
-    let ataqueAleatorio = aleatorio(1,3)
-    
-    if (ataqueAleatorio == 1){
-        ataqueEnemigo = 'FUEGO'
-    }else if (ataqueAleatorio == 2){
-        ataqueEnemigo = 'AGUA'
-    } else if (ataqueAleatorio == 3){
-        ataqueEnemigo = 'TIERRA'
+    let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length -1)
+
+    if (ataqueAleatorio == 0 || ataqueAleatorio == 1){
+        ataqueEnemigo.push('FUEGO')
+    }else if (ataqueAleatorio == 3 || ataqueAleatorio == 4){
+        ataqueEnemigo.push('AGUA')
+    } else{
+        ataqueEnemigo.push('TIERRA')
     }
+    console.log(ataqueEnemigo)
     combate()
     //se invoca la función aquí, antes de la de crearMensaje, para que la variable resultado ya tenga un valor establecido
 }
@@ -314,7 +319,5 @@ function reiniciarJuego(){
 function aleatorio(min,max){
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
-
 // NOTA: esta es otra manera de llamar al script despues de que se cargue todo el HTML. La funcion iniciarJuego se carga cuando ya todo el contenido esta cargado.
-
 window.addEventListener('load', iniciarJuego)
