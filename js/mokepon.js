@@ -237,10 +237,15 @@ function ataqueAleatorioEnemigo(){
         ataqueEnemigo.push('TIERRA')
     }
     console.log(ataqueEnemigo)
-    combate()
+    iniciarPelea()
     //se invoca la función aquí, antes de la de crearMensaje, para que la variable resultado ya tenga un valor establecido
 }
 
+function iniciarPelea(){
+    if (ataqueJugador.length === 5){
+        combate()
+    }
+}
 //Funcion Combate
 function combate(){
     
