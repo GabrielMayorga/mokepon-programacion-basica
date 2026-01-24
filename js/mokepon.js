@@ -213,7 +213,6 @@ function secuenciaAtaque(){
             ataqueAleatorioEnemigo()
         })
     })
-
     
 }
 
@@ -241,14 +240,28 @@ function ataqueAleatorioEnemigo(){
     //se invoca la función aquí, antes de la de crearMensaje, para que la variable resultado ya tenga un valor establecido
 }
 
+function indexAmbosOponentes(jugador, enemigo){
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}   
+
 function iniciarPelea(){
     if (ataqueJugador.length === 5){
         combate()
     }
 }
+
 //Funcion Combate
 function combate(){
-    
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        if(ataqueJugador[index] === ataqueEnemigo[index]){
+            indexAmbosOponentes(index, index)
+            crearMensaje("EMPATE")
+            
+
+        }
+        
+    }
 
     if (ataqueJugador == ataqueEnemigo){
         crearMensaje("EMPATE")
