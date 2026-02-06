@@ -37,6 +37,9 @@ let botonTierra
 let indexAtaqueJugador
 let indexAtaqueEnemigo 
 
+let victoriasJugador = 0
+let victoriasEnemigo = 0
+
 let botones = []
 
 let ataquesMokepon
@@ -261,8 +264,9 @@ function combate(){
         if(ataqueJugador[index] === ataqueEnemigo[index]){
             indexAmbosOponentes(index, index)
             crearMensaje("EMPATE")
-            vidasEnemigo--
-            spanvidasEnemigo.innerHTML = vidasEnemigo
+            victoriasJugador++
+            spanVidasJugador.innerHTML = vidasJugador
+            
         } else if (ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'TIERRA'){
             indexAmbosOponentes(index, index)
             crearMensaje("GANASTE")
@@ -284,11 +288,9 @@ function combate(){
             vidasJugador--
             spanVidasJugador.innerHTML = vidasJugador
         }
-    }
-
-    
-    //Revisar las vidas
+    }     //Revisar las vidas
     revisarVidas()
+ 
 }
 
 function revisarVidas(){
