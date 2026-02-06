@@ -34,6 +34,9 @@ let botonFuego
 let botonAgua 
 let botonTierra
 
+let indexAtaqueJugador
+let indexAtaqueEnemigo 
+
 let botones = []
 
 let ataquesMokepon
@@ -245,6 +248,7 @@ function indexAmbosOponentes(jugador, enemigo){
     indexAtaqueEnemigo = ataqueEnemigo[enemigo]
 }   
 
+//Funcion para iniciar pelea
 function iniciarPelea(){
     if (ataqueJugador.length === 5){
         combate()
@@ -257,33 +261,32 @@ function combate(){
         if(ataqueJugador[index] === ataqueEnemigo[index]){
             indexAmbosOponentes(index, index)
             crearMensaje("EMPATE")
-            
-
+            vidasEnemigo--
+            spanvidasEnemigo.innerHTML = vidasEnemigo
+        } else if (ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'TIERRA'){
+            indexAmbosOponentes(index, index)
+            crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else if (ataqueJugador[index] === 'AGUA' && ataqueEnemigo[index] === 'FUEGO'){
+            indexAmbosOponentes(index, index)
+            crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else if (ataqueJugador[index] === 'TIERRA' && ataqueEnemigo[index] === 'AGUA'){
+            indexAmbosOponentes(index, index)
+            crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else {
+            indexAmbosOponentes(index, index)
+            crearMensaje("PERDISTE")
+            vidasJugador--
+            spanVidasJugador.innerHTML = vidasJugador
         }
-        
     }
 
-    if (ataqueJugador == ataqueEnemigo){
-        crearMensaje("EMPATE")
-    }else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO"){
-        crearMensaje("GANASTES")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA"){
-        crearMensaje("GANASTES")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA"){
-        crearMensaje("GANASTES")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else{
-        crearMensaje("PERDISTES")
-        vidasJugador--
-        spanVidasJugador.innerHTML = vidasJugador
-
-        
-    }
+    
     //Revisar las vidas
     revisarVidas()
 }
