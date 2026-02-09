@@ -18,6 +18,10 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 const contenedorAtaques = document.getElementById('contenedorAtaques')
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
+ 
+
 // Variables Globales
 let mokepones = []
 let ataqueJugador = []
@@ -47,6 +51,8 @@ let ataquesMokeponEnemigo
 let mascotaJugador
 let vidasEnemigo = 3
 let vidasJugador = 3
+
+let lienzo = mapa.getContext('2d')
 
 class Mokepon {
     constructor(nombre, foto, vida){   
@@ -119,6 +125,7 @@ mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, tucapalma, pydos)
 function iniciarJuego(){   
 
     sectionSeleccionarAtaque.style.display = 'none'
+    sectionVerMapa.style.display = 'none'
 
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -148,7 +155,12 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
     
     sectionSeleccionarMascota.style.display = 'none'
-    sectionSeleccionarAtaque.style.display = 'flex'
+    //sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'flex'
+    let imagenCapipepo = new Image()
+    imagenCapipepo.src = capipepo.foto
+    lienzo.drawImage(
+        imagenCapipepo, 20, 40, 100, 100)
 
     if(inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
