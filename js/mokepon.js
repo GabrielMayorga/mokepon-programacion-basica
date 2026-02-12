@@ -60,7 +60,12 @@ class Mokepon {
         this.foto = foto
         this.vida = vida
         this.ataques = []
-
+        this.x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
     } 
 }
 
@@ -157,10 +162,8 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none'
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
-    let imagenCapipepo = new Image()
-    imagenCapipepo.src = capipepo.foto
-    lienzo.drawImage(
-        imagenCapipepo, 20, 40, 100, 100)
+
+    
 
     if(inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -352,6 +355,37 @@ function reiniciarJuego(){
 
 function aleatorio(min,max){
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function pintarPersonaje(){
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        capipepo.mapaFoto, 
+        capipepo.x,
+        capipepo.y,
+        capipepo.ancho,
+        capipepo.alto
+    )
+}
+
+function moverDerecha(){
+    capipepo.x = capipepo.x + 5
+    pintarPersonaje()
+}
+
+function moverIzquierda(){
+    capipepo.x = capipepo.x - 5
+    pintarPersonaje()
+}
+
+function moverArriba(){
+    capipepo.y = capipepo.y - 5
+    pintarPersonaje()
+}
+
+function moverAbajo(){
+    capipepo.y = capipepo.y + 5
+    pintarPersonaje()
 }
 // NOTA: esta es otra manera de llamar al script despues de que se cargue todo el HTML. La funcion iniciarJuego se carga cuando ya todo el contenido esta cargado.
 window.addEventListener('load', iniciarJuego)
