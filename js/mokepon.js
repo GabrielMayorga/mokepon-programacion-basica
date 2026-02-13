@@ -66,6 +66,8 @@ class Mokepon {
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     } 
 }
 
@@ -369,23 +371,19 @@ function pintarPersonaje(){
 }
 
 function moverDerecha(){
-    capipepo.x = capipepo.x + 5
-    pintarPersonaje()
+    capipepo.velocidadX = 5
 }
 
 function moverIzquierda(){
-    capipepo.x = capipepo.x - 5
-    pintarPersonaje()
+    capipepo.velocidadX = -5
 }
 
 function moverArriba(){
-    capipepo.y = capipepo.y - 5
-    pintarPersonaje()
+    capipepo.velocidadY = -5
 }
 
 function moverAbajo(){
-    capipepo.y = capipepo.y + 5
-    pintarPersonaje()
+    capipepo.velocidadY = 5
 }
 // NOTA: esta es otra manera de llamar al script despues de que se cargue todo el HTML. La funcion iniciarJuego se carga cuando ya todo el contenido esta cargado.
 window.addEventListener('load', iniciarJuego)
