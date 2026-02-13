@@ -164,6 +164,7 @@ function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = 'none'
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
+    intervalo = setInterval(pintarPersonaje, 50)
 
     
 
@@ -360,6 +361,8 @@ function aleatorio(min,max){
 }
 
 function pintarPersonaje(){
+    capipepo.x = capipepo.x + capipepo.velocidadX
+    capipepo.y = capipepo.y + capipepo.velocidadY   
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
     lienzo.drawImage(
         capipepo.mapaFoto, 
@@ -384,6 +387,10 @@ function moverArriba(){
 
 function moverAbajo(){
     capipepo.velocidadY = 5
+}
+function detenerMovimiento(){
+    capipepo.velocidadX = 0
+    capipepo.velocidadY = 0
 }
 // NOTA: esta es otra manera de llamar al script despues de que se cargue todo el HTML. La funcion iniciarJuego se carga cuando ya todo el contenido esta cargado.
 window.addEventListener('load', iniciarJuego)
